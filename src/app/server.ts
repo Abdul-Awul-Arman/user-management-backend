@@ -4,7 +4,8 @@ import app from "./app";
 
 let server:Server;
  
-const dataBaseUrl="mongodb+srv://monogdb:monogdb@cluster0.0nilmbf.mongodb.net/todosDB?retryWrites=true&w=majority&appName=Cluster0";
+const dataBaseUrl="mongodb://localhost:27017/userManagement";
+const PORT=4000;
 
 async function main(){
     try{
@@ -12,13 +13,14 @@ async function main(){
 
         console.log("Database connect successfully")
 
-        server=app.listen(4000,()=>{
-
-            console.log("App is listen is port 4000");
+            server=app.listen(PORT,()=>{
+            console.log(`App is listen is port ${PORT}`);
 
         })
 
     }catch(error){
+        
+        console.log(error);
 
     }
 };

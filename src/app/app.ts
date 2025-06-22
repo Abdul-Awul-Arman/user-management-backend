@@ -1,11 +1,10 @@
 import express, { Application, Request, Response } from "express"
+import { userRoute } from "./controllers/userController";
 
 const app:Application=express();
 
 
-app.get("/",(req:Request,res:Response)=>{
-    res.send("this ")
-})
+app.use("/user",userRoute)
 
 
 

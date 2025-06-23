@@ -4,15 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"ts-node-dev --respawn --transpile-only ./src/app/server",
+    "dev": "ts-node-dev --respawn --transpile-only ./src/app/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
-    "mongoose": "^8.15.2"
-    
+    "mongoose": "^8.15.2",
+    "mongoose-beautiful-unique-validation": "^7.1.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.3",

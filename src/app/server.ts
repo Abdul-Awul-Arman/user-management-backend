@@ -1,27 +1,26 @@
-import { Server } from "http";
-import mongoose from "mongoose";
-import app from "./app";
+import { Server } from 'http';
+import mongoose from 'mongoose';
+import app from './app';
+import { Users } from './model/users.model';
 
-let server:Server;
- 
-const dataBaseUrl="mongodb://localhost:27017/userManagement";
-const PORT=4000;
+let server: Server;
 
-async function main(){
-    try{
-        await mongoose.connect(dataBaseUrl)
+const dataBaseUrl = 'mongodb://localhost:27017/userManagement';
+const PORT = 4000;
 
-        console.log("✅ Database connected successfully");
+async function main() {
+  try {
+    await mongoose.connect(dataBaseUrl);
+    await Users.syncIndexes();
 
-            server=app.listen(PORT,()=>{
-                console.log(`🚀 Server is running on http://localhost:${PORT}`);
-        })
+    console.log('✅ Database connected successfully');
 
-    }catch(error){
-        
-        console.log(error);
+    server = app.listen(PORT, () => {
+      console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-    }
-};
-
-main()
+main();

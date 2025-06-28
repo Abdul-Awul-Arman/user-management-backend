@@ -1,6 +1,5 @@
-export interface iUsers{
-    name:string,
-    email:string,
-    isRegistered:boolean
-};
-
+export interface iUsers {
+  name: string;
+  email: string;
+  isRegistered: boolean;
+}

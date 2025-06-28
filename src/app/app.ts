@@ -1,31 +1,26 @@
-import express, { Application, Request, Response } from "express"
-import { userRoute } from "./controllers/userController";
-import { Users } from "./model/users.model";
+import express, { Application, Request, Response } from 'express';
+import { userRoute } from './controllers/userController';
+import { Users } from './model/users.model';
+import cors from 'cors';
 
-const app:Application=express();
+// todo 
+// --global error handler and route mismatch error handle setup
 
-app.use(express.json())
+const app: Application = express();
 
-app.use("/user",userRoute)
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  })
+);
 
-app.get('/',async(req:Request,res:Response)=>{
+app.use(express.json());
 
-    try{
-        const users=await Users.find();
+app.use('/users', userRoute);
 
-        res.status(200).json(users);
-    }catch(error:any){
-        res.status(500).json({
-            success:false,
-            message:error.message,
-        })
-
-    }
-
-})
-
-
-
+app.get('/', (req: Request, res: Response) => {
+  res.send('This is home route');
+});
 
 export default app;
-

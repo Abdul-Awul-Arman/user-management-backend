@@ -36,7 +36,7 @@ userRoute.post('/create-user', async (req: Request, res: Response) => {
     res.status(201).json({
       createSuccess: true,
       message: 'User created successfully',
-      users: body,
+      users: users,
     });
   } catch (error: any) {
     if (error.errorResponse.code === 11000) {
